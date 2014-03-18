@@ -44,10 +44,10 @@ $remote_host = array_value($options, 'remote-host', null);
 
 if($remote_host){
 	$esc_host = escapeshellarg($remote_host);
-	exec("ssh {$esc_host} -C df -m {$disk}", $df_result, $df_exit);
+	exec("ssh {$esc_host} -C df -P -m {$disk}", $df_result, $df_exit);
 }
 else {
-	exec("df -m {$disk}", $df_result, $df_exit);
+	exec("df -P -m {$disk}", $df_result, $df_exit);
 }
 
 if( !$df_exit ){
